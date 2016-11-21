@@ -10,7 +10,15 @@ namespace AspNetCore1_1_HiddenNameBug.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var model = new MyModel
+            {
+                Rows = new List<MyModelRow>
+                {
+                    new MyModelRow { IntProperty = 1, StringProperty = "A" },
+                    new MyModelRow { IntProperty = 2, StringProperty = "B" },
+                }
+            };
+            return View(model);
         }
 
         public IActionResult Error()
